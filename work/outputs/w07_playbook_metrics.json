@@ -1,0 +1,14 @@
+{
+  "model": "RandomForestClassifier, verified features only (feb_ctr, feb_avg_position)",
+  "baseline_precision": {
+    "p_at_20": 0.15,
+    "p_at_50": 0.22
+  },
+  "model_precision_main_split": {
+    "p_at_20": 0.25,
+    "p_at_50": 0.32
+  },
+  "training_clients": 28,
+  "test_clients": 10,
+  "qualifying_pages_in_final_queue": 46365
+}
