@@ -43,6 +43,34 @@ considered — especially label-derived fields (`trend_direction`, `trend_pct`) 
 IDs (grouping only, never features). Confirm nothing client-identifying appears anywhere in
 `work/`.
 
+**Data used:** FlyRank's internship data warehouse (`FlyRank/internship-warehouse`,
+build `flyrank_pseudonymized_warehouse_release_v20260703`), specifically
+`fact_content_daily_performance` (February–March 2026) and `dim_content`.
+
+**Columns deliberately excluded, and why:**
+- `trend_direction` / `trend_pct`: directly derived from the same comparison used to build
+  our label — using either as a feature would be leakage.
+- Any March-window signal (e.g. `march_impressions`): used only to construct the label,
+  never as a model feature.
+- `provider_used` / `model_used`: 71.5% missing, with confounding risk (correlation with
+  decline may reflect adoption timing, not content quality).
+- `ai_traffic_pct`: 93.6% of rows were exactly zero — too sparse for reliable page-level
+  claims.
+- Rows lacking genuine tracking (`gsc_data_available = FALSE`): excluded via SQL filter, as
+  these are zero-filled placeholders, not real measurements.
+
+**Leakage risks considered:**
+- Confirmed programmatically (via assertion, not just stated) that neither `is_declining`
+  nor `march_impressions` ever appear among model features.
+- Confirmed all dynamic features are built from SQL queries explicitly restricted to
+  February dates only, with no March data included.
+- Pseudonymous IDs (`client_hash_id`, `content_hash_id`) are used strictly for joining and
+  grouping (e.g. client-holdout validation) — never as model features.
+
+**Confirmation:** No client names, URLs, or private queries appear anywhere in this report,
+the accompanying notebooks, or `work/`. All identifiers shown are pseudonymized hashes
+provided directly by the FlyRank release.
+
 ## 3. Baseline
 
 The transparent rule or score you built first. Why it's a fair comparison, and its numbers on
