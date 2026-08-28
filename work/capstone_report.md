@@ -13,6 +13,28 @@
 What decision does this support? Name the unit of analysis (page, client, day…), the output
 (score, rank, cluster, report), the action a human takes from it, and the cost of a wrong
 call. Why does data/ML help here at all?
+## 1. Problem framing
+
+**Decision supported:** Which pages a FlyRank content reviewer should prioritize reviewing
+first, out of a large page inventory, when they have limited time and cannot review every
+page individually.
+
+**Unit of analysis:** One content page, evaluated using its February 2026 performance signals.
+
+**Output:** A ranked queue — pages sorted by predicted decline-risk score (highest first),
+each with a reason code and a recommended action.
+
+**Action a human takes:** A reviewer works through the queue in order, starting a title/meta
+review on the highest-priority flagged pages first.
+
+**Cost of a wrong call:** Two-directional. Flagging a page that didn't need review wastes
+reviewer time but causes no lasting harm. Missing a page that genuinely needed review risks
+that page continuing to lose traffic silently — the more expensive mistake.
+
+**Why data/ML helps here:** A hand-written rule using the same two verified signals (CTR,
+position) achieved Precision@20 = 0.15. A model using the same signals, but able to express
+graded relationships instead of a strict binary threshold, achieved Precision@20 = 0.25–0.35.
+The underlying pattern was real but too nuanced for a simple fixed rule to fully capture.
 
 ## 2. Data safety
 
