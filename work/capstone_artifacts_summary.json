@@ -1,0 +1,30 @@
+{
+  "base_rate": 0.159,
+  "baseline_precision": {
+    "p_at_20": 0.15,
+    "p_at_50": 0.22
+  },
+  "model_precision": {
+    "p_at_20": 0.25,
+    "p_at_50": 0.32
+  },
+  "stability_range": {
+    "p_at_20": [
+      0.25,
+      0.35
+    ],
+    "p_at_50": [
+      0.16,
+      0.32
+    ]
+  },
+  "training_clients": 28,
+  "test_clients": 10,
+  "client_overlap": 0,
+  "qualifying_pages_final_queue": 46365,
+  "gsc_data_coverage": "36.7%",
+  "signal_audit": {
+    "ctr_vs_position": "CONFIRMED",
+    "volume_vs_decline": "OPPOSITE"
+  }
+}
