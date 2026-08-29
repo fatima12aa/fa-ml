@@ -2,7 +2,7 @@
 
 - **Author: Fatima Arshad**
 - **Lane: 2**
-- **Repo: ** [https://github.com/fatima12aa/fa-ml]
+- **Repo: ** https://github.com/fatima12aa/fa-ml
 - **Date:** 29 August 2026
 
 > Copy this file to `work/capstone_report.md` and fill it in as you build. The eight
